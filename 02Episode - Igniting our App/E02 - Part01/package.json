@@ -1,0 +1,28 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "namaste react - Igniting our app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChinmayKaitade/Namaste-React-Dev.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "frontend",
+    "namaste-react"
+  ],
+  "author": "Chinmay Kaitade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChinmayKaitade/Namaste-React-Dev/issues"
+  },
+  "homepage": "https://github.com/ChinmayKaitade/Namaste-React-Dev#readme",
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  }
+}
