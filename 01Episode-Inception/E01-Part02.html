@@ -3,16 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React CDN | Nested Structure</title>
-    <link rel="stylesheet" href="./index.css" />
+    <title>Namaste React</title>
   </head>
   <body>
-    <h1>Hello Top of Root</h1>
-    <div id="root">
-      <h1>Namaste React is Here!</h1>
-    </div>
-    <h1>Hello Bottom of Root</h1>
+    <div id="root"></div>
 
+    <!-- React CDN -->
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
@@ -22,6 +18,10 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
     ></script>
 
-    <script src="./App.js"></script>
+    <script>
+      const heading = React.createElement("h1", {}, "Hello World from React!");
+
+      const root = 
+    </script>
   </body>
 </html>
