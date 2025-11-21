@@ -93,7 +93,7 @@ Aapka statement bilkul sahi hai: **"JSX looks like HTML, but JSX is NOT HTML."**
 
 ---
 
-## 5\. JSX Attributes aur Naming Conventions 🎨🏷️
+## 5. JSX Attributes aur Naming Conventions 🎨🏷️
 
 JSX HTML jaisa dikhta hai, lekin woh JavaScript hai, isliye iske attributes likhne ke kuch khaas rules hain:
 
@@ -150,3 +150,72 @@ const Link = () => (
   </a>
 );
 ```
+
+---
+
+## 6. React Components: The Building Blocks 🧱
+
+### Component Kya Hai?
+
+Component React application ka **main building block** hota hai. Ek component, **HTML, CSS, aur JavaScript** ka ek chhota sa, **reusable (dobara use hone wala)** aur **independent** piece hota hai.
+
+- **Role:** Component ka kaam sirf **UI (User Interface)** ke ek hisse ko render karna hota hai.
+- **Analogy:** Jaise Lego blocks hote hain, waise hi components hote hain. Har block apna kaam karta hai, aur sab milkar poori application banaate hain.
+
+---
+
+### Type 1: Class Components (The Old Way - Ab Kam Use Hota Hai) 🏛️
+
+- **Structure:** Yeh JavaScript **classes** hote hain jo **`React.Component`** ko extend karte hain.
+- **Key Feature:** Class components mein `state` aur `lifecycle methods` ko manage karne ke liye **`this`** keyword aur specific methods use hote the.
+- **Mandatory Method:** Inmein hamesha ek **`render()`** method hona chahiye jo JSX (UI) return karta hai.
+
+#### 📝 Example:
+
+```javascript
+class Header extends React.Component {
+  render() {
+    return <h1>Hello from Class Component!</h1>;
+  }
+}
+```
+
+- **Interview Point:** Ab yeh **Legacy** maane jaate hain. Naye projects mein functional components use hote hain.
+
+---
+
+### Type 2: Functional Components (The New & Modern Way) ✨
+
+- **Structure:** Yeh sirf simple **JavaScript functions** hote hain.
+- **New Feature:** Hooks (jaise `useState`, `useEffect`) aane ke baad se, yeh components bhi `state` aur `lifecycle methods` ko manage kar sakte hain.
+- **Role:** Yeh function **props** (data) ko input mein lete hain aur **JSX** (UI) ko output mein return karte hain.
+- **Industry Standard:** Aaj ke samay mein, Functional Components hi **preferred** tareeka hain React likhne ka.
+
+#### 📝 Example:
+
+```javascript
+// Arrow Function Style (Zyada Common)
+const Header = () => {
+  return <h1>Hello from Functional Component!</h1>;
+};
+
+// Regular Function Style (Bhi Valid Hai)
+function Footer() {
+  return <footer>The End</footer>;
+}
+```
+
+---
+
+### ⭐ Key Differences (Must Know)
+
+| Feature         | Class Component (OLD)                                       | Functional Component (NEW)                               | Emojis      |
+| :-------------- | :---------------------------------------------------------- | :------------------------------------------------------- | :---------- |
+| **Syntax**      | JavaScript `class` use karta hai.                           | Simple `function` ya `arrow function` use karta hai.     | 🏛️ $\to$ ✨ |
+| **`this`**      | State/methods access karne ke liye **`this`** use hota tha. | **`this`** keyword ki zarurat nahi hoti.                 | 🧐🚫        |
+| **State/Logic** | `this.state` aur **Lifecycle Methods** use hote the.        | **React Hooks** (`useState`, `useEffect`) use hote hain. | 🧠💡        |
+| **Simplicity**  | Thoda complex.                                              | **Zyada clean** aur easy to read.                        | 🐢 $\to$ 🐇 |
+
+**Super Summary:** Components UI ka reusable tukda hain. Class Components purane hain aur `this` use karte the. Functional Components naye hain, simple functions hain, aur Hooks use karke powerful bante hain.
+
+---
