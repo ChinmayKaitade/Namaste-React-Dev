@@ -219,3 +219,59 @@ function Footer() {
 **Super Summary:** Components UI ka reusable tukda hain. Class Components purane hain aur `this` use karte the. Functional Components naye hain, simple functions hain, aur Hooks use karke powerful bante hain.
 
 ---
+
+## 7. Infinite Looping (Stack Overflow) 💥🔄
+
+### Output aur Infinite Loop Ka Kaaran
+
+Aapka diya gaya code ek **Infinite Loop** create karega aur browser **crash** ho jayega ya **Stack Overflow** error dega.
+
+| Component              | Body                                       |
+| :--------------------- | :----------------------------------------- |
+| **`Title`**            | `return (<>... <HeadingComponent /> </>);` |
+| **`HeadingComponent`** | `return (<> <Title /> ... </>);`           |
+
+1.  **`Title`** component call hua.
+2.  `Title` ne apne **`return`** statement mein **`HeadingComponent`** ko call kiya.
+3.  **`HeadingComponent`** call hua.
+4.  `HeadingComponent` ne apne **`return`** statement mein **`Title`** ko call kiya.
+5.  ...Aur yeh chain **hamesha chalti rahegi!**
+
+Yeh ek **recursive call** hai jismein koi **exit condition** nahi hai. Har call ek naya execution context **(stack frame)** memory mein daalta hai.
+
+### Infinite Loop Cause Explained (Kaaran)
+
+- **Recursion without Base Case:** Components ek doosre ko unke **render phase** mein call kar rahe hain (mutual recursion). Jab `Title` render hota hai, woh `HeadingComponent` ko render karne ko kehta hai, aur `HeadingComponent` wapas `Title` ko render karne ko kehta hai.
+- **Stack Overflow:** Browser ki memory (call stack) ki ek limit hoti hai. Jab yeh loop chalta hai, toh **function calls** itni tezi se jama ho jaati hain ki **memory overflow** ho jati hai.
+  - **Result:** Browser **hang** ho jayega ya **"Maximum update depth exceeded"** (React mein) ya **"Stack size exceeded"** error aayega.
+  - **Fix:** Components ko is tarah se **chain** nahi karna chahiye ki woh ek doosre ko **return** mein call karein.
+
+---
+
+## 8. JSX aur Security (Cross-Site Scripting - XSS) 🔒🛡️
+
+Aapki observation aur `UserData` component ka example bilkul sahi hai! Yeh concept **Cross-Site Scripting (XSS) attacks** se related hai.
+
+### XSS Attack Kya Hai?
+
+- **Goal:** Attacker malicious **JavaScript code** (payload) ko database ya API ke through inject karta hai.
+- **Method:** Jab user (jaise aap) us data ko render karta hai, toh woh malicious JS code browser mein **execute** ho jaata hai.
+- **Danger:** Yeh code user ke **browser data** (cookies, `localStorage`, session data) ko **chura** sakta hai aur attacker ko bhej sakta hai.
+
+### JSX Ise Kaise Rokta Hai? (The Prevention)
+
+- **Automatic Sanitization:** React mein JSX by default **string data** ko render karta hai, **HTML/JavaScript code** ko nahi.
+- **Escaping (Bhaag Jana):** Jab aap JSX mein curly braces `{data}` ke andar koi variable daalte hain, toh React us variable ki value ko **escape** kar deta hai.
+
+#### Example (If `data` has malicious JS):
+
+| Original Malicious Code (Attacker ka Data) | JSX Mein Render Hone Ke Baad (Safely Escaped) |
+| :----------------------------------------- | :-------------------------------------------- |
+| `<script>alert('XSS!');</script>`          | `&lt;script&gt;alert('XSS!');&lt;/script&gt;` |
+
+- **Result:** Browser is `&lt;script&gt;` ko ek **simple text string** ki tarah padhta hai, na ki ek executable HTML tag ki tarah.
+- **Conclusion:** React is **data sanitization** ko **automatically** handle karta hai, jiski wajah se React applications **XSS attacks** se **highly protected** hoti hain.
+
+React ki is security feature ki wajah se hum bina zyada chinta kiye API data ko direct JSX mein display kar sakte hain.
+
+---
