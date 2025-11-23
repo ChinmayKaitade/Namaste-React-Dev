@@ -1,0 +1,27 @@
+{
+  "name": "talk-is-cheap-show-me-code",
+  "version": "1.0.0",
+  "description": "Episode-04: Talk is Cheap Show me the Code",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChinmayKaitade/Namaste-React-Dev.git"
+  },
+  "author": "Chinmay Kaitade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChinmayKaitade/Namaste-React-Dev/issues"
+  },
+  "homepage": "https://github.com/ChinmayKaitade/Namaste-React-Dev#readme",
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

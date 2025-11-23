@@ -1,0 +1,16 @@
+<!-- - Header
+  - Logo
+  - Nav Items
+- Body
+  - Search
+  - Restaurant Card Container
+        - Restaurant Card
+          - image
+          - name of restaurant
+          - star ratings
+          - cuisines
+- Footer
+    - Copyrights
+    - Links
+    - Address
+    - Contact -->
